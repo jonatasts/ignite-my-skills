@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { SafeAreaView, Text, View, TextInput } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
+import { Button } from "../../components/Button";
 
 import styles from "./styles";
 
@@ -25,13 +26,7 @@ export const Home = () => {
         onChangeText={setNewSkill}
       />
 
-      <RectButton
-        style={styles.button}
-        activeOpacity={0.3}
-        onPress={handleAddNewSkill}
-      >
-        <Text style={styles.buttonText}>Add</Text>
-      </RectButton>
+      <Button title={"Add"} onPress={handleAddNewSkill} />
 
       <Text style={[styles.title, styles.spacing]}>My Skills</Text>
 
