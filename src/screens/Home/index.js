@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { SafeAreaView, Text, View, TextInput } from "react-native";
-import { RectButton } from "react-native-gesture-handler";
+
 import { Button } from "../../components/Button";
+import { SkillCard } from "../../components/SkillCard";
 
 import styles from "./styles";
 
@@ -31,9 +32,7 @@ export const Home = () => {
       <Text style={[styles.title, styles.spacing]}>My Skills</Text>
 
       {mySkills.map((skill) => (
-        <RectButton key={skill} style={styles.buttonSkill}>
-          <Text style={[styles.textSkill]}>{skill}</Text>
-        </RectButton>
+        <SkillCard key={skill} skill={skill} />
       ))}
     </View>
   );
