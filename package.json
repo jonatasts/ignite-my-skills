@@ -22,7 +22,7 @@
     "eslint": "^8.19.0",
     "jest": "^28.1.2",
     "metro-react-native-babel-preset": "^0.71.3",
-    "react-test-renderer": "17.0.2"
+    "typescript": "^4.7.4"
   },
   "jest": {
     "preset": "react-native"
