@@ -20,6 +20,10 @@ export const Home = () => {
     setMySkills((oldSkills) => [...oldSkills, data]);
   };
 
+  const handleRemoveSkill = (id: string) => {
+    setMySkills((oldsSkills) => oldsSkills.filter((skill) => skill.id !== id));
+  };
+
   return (
     <View style={styles.container}>
       <SafeAreaView />
@@ -41,7 +45,12 @@ export const Home = () => {
         data={mySkills}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <SkillCard skill={item.name} />}
+        renderItem={({ item }) => (
+          <SkillCard
+            skill={item.name}
+            onPress={() => handleRemoveSkill(item.id)}
+          />
+        )}
       />
     </View>
   );
