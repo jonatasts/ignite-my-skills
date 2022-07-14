@@ -5,13 +5,19 @@ import { Button } from "../../components/Button";
 import { SkillCard } from "../../components/SkillCard";
 
 import styles from "./styles";
+import { SkillData } from "./types";
 
 export const Home = () => {
   const [newSkill, setNewSkill] = useState("");
-  const [mySkills, setMySkills] = useState([]);
+  const [mySkills, setMySkills] = useState<SkillData[]>([]);
 
   const handleAddNewSkill = () => {
-    setMySkills((oldSkills) => [...oldSkills, newSkill]);
+    const data = {
+      id: String(new Date().getTime()),
+      name: newSkill,
+    };
+
+    setMySkills((oldSkills) => [...oldSkills, data]);
   };
 
   return (
@@ -34,8 +40,8 @@ export const Home = () => {
       <FlatList
         data={mySkills}
         showsVerticalScrollIndicator={false}
-        keyExtractor={(item) => item}
-        renderItem={({ item }) => <SkillCard skill={item} />}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <SkillCard skill={item.name} />}
       />
     </View>
   );
