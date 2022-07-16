@@ -23,4 +23,7 @@ export default StyleSheet.create({
   spacing: {
     marginVertical: 50,
   },
+  greetings: {
+    color: "#FFF",
+  },
 });

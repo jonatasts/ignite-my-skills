@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, Text, View, TextInput, FlatList } from "react-native";
 
 import { Button } from "../../components/Button";
@@ -10,6 +10,7 @@ import { SkillData } from "./types";
 export const Home = () => {
   const [newSkill, setNewSkill] = useState("");
   const [mySkills, setMySkills] = useState<SkillData[]>([]);
+  const [greeting, setGreeting] = useState("");
 
   const handleAddNewSkill = () => {
     const data = {
@@ -24,11 +25,31 @@ export const Home = () => {
     setMySkills((oldsSkills) => oldsSkills.filter((skill) => skill.id !== id));
   };
 
+  useEffect(() => {
+    const currentHour = new Date().getHours();
+
+    switch (true) {
+      case currentHour < 12:
+        setGreeting("Good morning");
+        break;
+
+      case currentHour < 18:
+        setGreeting("Good affternoon");
+        break;
+
+      default:
+        setGreeting("Good night");
+        break;
+    }
+  }, []);
+
   return (
     <View style={styles.container}>
       <SafeAreaView />
 
       <Text style={styles.title}>Welcome, Jhon</Text>
+
+      <Text style={styles.greetings}>{greeting}</Text>
 
       <TextInput
         style={styles.input}
