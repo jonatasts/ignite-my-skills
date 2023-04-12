@@ -26,7 +26,7 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    const currentHour = new Date().getHours();
+    const currentHour = new Date().getHours() - 3;
 
     switch (true) {
       case currentHour < 12:
