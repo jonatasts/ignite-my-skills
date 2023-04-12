@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StatusBar } from "react-native";
 
+import SplashScreen from "react-native-splash-screen";
 import { Home } from "./src/screens/Home";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-const App = () => (
-  <>
-    <Home />
-    <StatusBar barStyle={"light-content"} />
-  </>
-);
+export default function App() {
+  useEffect(() => {
+    SplashScreen.hide();
+  });
 
-export default App;
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <StatusBar barStyle="light-content" />
+      <Home />
+    </GestureHandlerRootView>
+  );
+}
